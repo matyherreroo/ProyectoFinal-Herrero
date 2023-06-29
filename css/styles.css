@@ -36,7 +36,53 @@
     font-size: 24px;
     margin-top: 20px;
 }
+
 body{
 background-image: linear-gradient(150deg, #fd1616 0%, #3b5fe3 50%, #be3434 100%);
 
 }
+.title{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.subtitle{
+    margin-left: 10px;
+}
+a{
+    color: beige;}
+
+.dineroDisponible{
+    font-size: 26px;
+    display: flex;
+    justify-content: end;
+    margin-right: 15px;
+    text-decoration: underline; 
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 240, 255, 0.164);
+    
+
+
+}
+.option{
+    background-image: linear-gradient(150deg, #fd1616 0%, #3b5fe3 50%, #be3434 100%);
+    border-radius: 4px;
+}
+.opcionUno{
+    background-color: #de0606;
+    color: rgb(0, 0, 0);
+}
+.opcionDos{
+    background-color: #000000;
+    color: white;
+    border-radius: 5px;
+}
+.apostar{
+    border-radius: 6px;
+    
+}
+

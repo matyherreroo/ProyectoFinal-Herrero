@@ -8,33 +8,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body>
+<body class="body">
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-light ">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">SSneaker <head></head></a>
+              <a class="navbar-brand" href="#">Rouletty<head></head></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Play</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Retirar dinero</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">Ingresar dinero</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown link
+                      Ayuda
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><a class="dropdown-item" href="./pages/ayuda.html">Quiero comunicarme con soporte</a></li>
+                      <li><a class="dropdown-item" href="./pages/dinero.html">no puedo retirar o ingesar dinero</a></li>
+                      <li><a class="dropdown-item" href="./pages/comentario.html">quiero dejar un comentario</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -44,16 +44,22 @@
     </header>
     <main>
       <div>
-        <h1>Ruleta Loca</h1>
+        <div class="dineroDisponible" id="dineroAcumulado">Dinero acumulado: $<span id="montoAcumulado">0</span></div>
+        <h1  class="subtitle">Ruleta Loca</h1>
         <h4>¡ El juego que te hara millonario en segundos!</h4>
+        <form class="formulario" id="ruletaForm">
+          <label for="apuesta">Apostar al color:</label>
+          <select class="option" id="apuesta" name="apuesta">
+            <option class="opcionUno" value="rojo">Rojo</option>
+            <option class="opcionDos" value="negro">Negro</option>
+          </select><br>
+          <label for="montoApuesta">Monto a apostar en dólares:</label>
+          <input type="number" id="montoApuesta" name="montoApuesta"><br>
+          <input class="apostar" type="submit" value="Apostar">
+        </form>
       </div>
-      <link rel="stylesheet" type="text/css" href="styles.css">
-      <h1>Simulador de Ruleta</h1>
+      <h1 class="title">aplica tu apuesta y comienza a ganar</h1>
       <div id="ruleta">
-          <div class="separacion negro"></div>
-          <div class="separacion rojo"></div>
-          <div class="separacion negro"></div>
-          <div class="separacion rojo"></div>
           <div class="separacion negro"></div>
           <div class="separacion rojo"></div>
       </div>

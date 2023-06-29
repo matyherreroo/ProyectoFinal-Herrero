@@ -1,10 +1,9 @@
-
 let historialResultados = [];
-
 let estadisticasColores = {
   rojo: 0,
   negro: 0
 };
+let montoAcumulado = 0;
 
 function generarNumeroAleatorio() {
   return Math.random();
@@ -41,12 +40,15 @@ function actualizarMensaje(apuesta, colorGanador, montoApuesta) {
 
   if (apuesta === colorGanador) {
     let montoGanado = montoApuesta * 2;
+    montoAcumulado += montoGanado;
     mensaje = "¡Ganaste! Apostaste al color " + apuesta + " y salió " + colorGanador + ". Ganaste $" + montoGanado + ".";
   } else {
+    montoAcumulado -= montoApuesta;
     mensaje = "Perdiste. Apostaste al color " + apuesta + " y salió " + colorGanador + ".";
   }
 
   document.getElementById("mensaje").innerHTML = mensaje;
+  document.getElementById("montoAcumulado").textContent = montoAcumulado;
 
   guardarDatosEnLocalStorage();
 }
@@ -80,10 +82,12 @@ function mostrarUltimosColoresGanadores() {
   guardarDatosEnLocalStorage();
 }
 
-document.getElementById("ruleta").addEventListener("click", function() {
-  let apuesta = prompt("¿Apostar al color rojo o negro?").toLowerCase();
+document.getElementById("ruletaForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  let apuesta = document.getElementById("apuesta").value.toLowerCase();
   if (apuesta === "rojo" || apuesta === "negro") {
-    let montoApuesta = parseFloat(prompt("¿Cuánto quieres apostar en dólares?"));
+    let montoApuesta = parseFloat(document.getElementById("montoApuesta").value);
     if (!isNaN(montoApuesta)) {
       let colorGanador = obtenerColorAleatorio();
 
@@ -124,10 +128,6 @@ console.log(personaEncontrada);
 obtenerDatosDeLocalStorage();
 mostrarUltimasApuestas();
 mostrarUltimosColoresGanadores();
-   
-
-
-
 
 
 
