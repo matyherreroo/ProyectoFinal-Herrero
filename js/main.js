@@ -1,4 +1,5 @@
-let historialResultados = [];
+
+ let historialResultados = [];
 let estadisticasColores = {
   rojo: 0,
   negro: 0
@@ -80,7 +81,7 @@ function mostrarUltimosColoresGanadores() {
   }
 
   guardarDatosEnLocalStorage();
-}
+} 
 
 document.getElementById("ruletaForm").addEventListener("submit", function(event) {
   event.preventDefault();
@@ -95,6 +96,8 @@ document.getElementById("ruletaForm").addEventListener("submit", function(event)
 
       estadisticasColores[colorGanador]++;
 
+      validarApuesta()
+
       actualizarMensaje(apuesta, colorGanador, montoApuesta);
 
       mostrarUltimasApuestas();
@@ -105,12 +108,26 @@ document.getElementById("ruletaForm").addEventListener("submit", function(event)
       console.log("Monto apostado:", montoApuesta);
       console.log("Color ganador:", colorGanador);
     } else {
-      alert("Monto de apuesta inválido. Por favor, introduce un número válido.");
+      errorNumero()
     }
-  } else {
-    alert("Apuesta inválida. Por favor, elige entre rojo o negro.");
-  }
+  } 
 });
+
+const errorNumero = () =>{
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'No colocaste un valor válido en tu apuesta'
+  })
+}
+const validarApuesta = () =>{
+  Swal.fire({
+    icon: 'success',
+    title: 'Apuesta realizada con éxito',
+    showConfirmButton: false,
+    timer: 1000
+  })
+}
 
 let personas = [
   { id: 1, nombre: 'Juan' },
@@ -125,9 +142,21 @@ let buscarPorId = (personas, id) => {
 let personaEncontrada = buscarPorId(personas, 2);
 console.log(personaEncontrada);
 
+function formatNumber(number) {
+  return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function getDolarBlueValue() {
+  $.getJSON("https://www.dolarblue.net/api/dolarblue", function(data) {
+    var blueValue = data.value;
+    $("#blue-value").text("Valor del Dólar Blue: $" + formatNumber(blueValue));
+  });
+}
+
+setInterval(getDolarBlueValue, 30000);
+getDolarBlueValue();
+
 obtenerDatosDeLocalStorage();
 mostrarUltimasApuestas();
-mostrarUltimosColoresGanadores();
-
-
-
+mostrarUltimosColoresGanadores(); 
+ 
