@@ -145,20 +145,8 @@ obtenerDatosDeLocalStorage();
 mostrarUltimasApuestas();
 mostrarUltimosColoresGanadores(); 
  
-let DatosDolar = document.querySelector("#DatosDolar")
-        fetch("https://api.estadisticasbcra.com/usd", {
-        headers:{ 
-        Authorization:" BEARER eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjAyMTA3NzUsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJoZXJyZXJvbWF0aWFzMTIzQGdtYWlsLmNvbSJ9.CHXxh5TpheEs7eKR10dy6UhEZVMSlS_dWvsTMV8jHhbsGNJ3iTIwiMogXikAHj2pl7UFseLXELzLgo-Lalu2yg"
-        }
-        })
-        .then ((response) => response.json())
-        .then((data)=>{
-          console.log(data);
-          data.forEach(info => {
-            const content = document.createElement("div")
-            content.innerHTML = `
-            <h4>valor del dolar actualizado: ${info.d}</h4>
-            `
-            DatosDolar.append(content)
-          });
-        }) 
+
+     fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log('error', error)); 
